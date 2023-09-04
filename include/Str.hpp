@@ -15,6 +15,7 @@ namespace simple_python
         virtual std::shared_ptr<Object> operator[](int index);
         virtual std::shared_ptr<Object> operator+(std::shared_ptr<Object> other);
         virtual bool operator==(const Object &other) const override;
+        virtual const std::type_info &type() const override;
 
     private:
         std::string value;

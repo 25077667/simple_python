@@ -13,10 +13,10 @@ std::string simple_python::Dict::str() const
 
 bool simple_python::Dict::operator==(const Object &other) const
 {
-    auto other_dict = dynamic_cast<const Dict *>(&other);
-    if (other_dict == nullptr)
+    if (other.type() != type())
         return false;
 
+    auto other_dict = dynamic_cast<const Dict *>(&other);
     if (pairs.size() != other_dict->pairs.size())
         return false;
 
@@ -52,4 +52,9 @@ std::shared_ptr<simple_python::Object> simple_python::Dict::operator[](const Obj
 void simple_python::Dict::append(std::shared_ptr<Pair> item)
 {
     pairs.push_back(item);
+}
+
+const std::type_info &simple_python::Dict::type() const
+{
+    return typeid(Dict);
 }

@@ -30,10 +30,10 @@ simple_python::Tuple::operator+(std::shared_ptr<simple_python::Object> other)
 
 bool simple_python::Tuple::operator==(const Object &other) const
 {
-    auto other_tuple = dynamic_cast<const Tuple *>(&other);
-    if (other_tuple == nullptr)
+    if (other.type() != type())
         return false;
 
+    auto other_tuple = dynamic_cast<const Tuple *>(&other);
     if (value.size() != other_tuple->value.size())
         return false;
 
@@ -42,4 +42,9 @@ bool simple_python::Tuple::operator==(const Object &other) const
             return false;
 
     return true;
+}
+
+const std::type_info &simple_python::Tuple::type() const
+{
+    return typeid(Tuple);
 }

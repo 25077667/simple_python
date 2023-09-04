@@ -22,6 +22,7 @@ namespace simple_python
         virtual Dict operator+(const Dict &other) const;
         virtual std::shared_ptr<Object> operator[](const Object &key) const;
         virtual void append(std::shared_ptr<Pair> item);
+        virtual const std::type_info &type() const override;
 
     private:
         std::vector<std::shared_ptr<Pair>> pairs;

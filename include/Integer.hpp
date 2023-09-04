@@ -11,6 +11,7 @@ namespace simple_python
         Integer(int value) : value(value) {}
         virtual std::string str() const override;
         virtual bool operator==(const Object &other) const override;
+        virtual const std::type_info &type() const override;
 
     private:
         int value;

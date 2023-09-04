@@ -43,10 +43,10 @@ std::shared_ptr<simple_python::Object> simple_python::List::operator+(std::share
 
 bool simple_python::List::operator==(const Object &other) const
 {
-    auto other_list = dynamic_cast<const List *>(&other);
-    if (other_list == nullptr)
+    if (other.type() != type())
         return false;
 
+    auto other_list = dynamic_cast<const List *>(&other);
     if (value.size() != other_list->value.size())
         return false;
 
@@ -55,4 +55,9 @@ bool simple_python::List::operator==(const Object &other) const
             return false;
 
     return true;
+}
+
+const std::type_info &simple_python::List::type() const
+{
+    return typeid(List);
 }

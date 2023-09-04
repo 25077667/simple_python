@@ -7,10 +7,14 @@ std::string simple_python::Integer::str() const
 
 bool simple_python::Integer::operator==(const Object &other) const
 {
-    auto other_int = dynamic_cast<const Integer *>(&other);
-    if (other_int == nullptr)
-    {
+    if (other.type() != type())
         return false;
-    }
+
+    auto other_int = dynamic_cast<const Integer *>(&other);
     return value == other_int->value;
+}
+
+const std::type_info &simple_python::Integer::type() const
+{
+    return typeid(Integer);
 }

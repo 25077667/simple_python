@@ -17,6 +17,7 @@ namespace simple_python
         virtual std::shared_ptr<Object> operator+(std::shared_ptr<Object> other);
         virtual std::shared_ptr<Object> operator[](int index);
         virtual void append(std::shared_ptr<Object> item);
+        virtual const std::type_info &type() const override;
 
     private:
         std::vector<std::shared_ptr<Object>> value;

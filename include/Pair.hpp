@@ -14,6 +14,7 @@ namespace simple_python
         std::string str() const override;
 
         virtual bool operator==(const Object &other) const override;
+        virtual const std::type_info &type() const override;
 
         std::shared_ptr<Object> first;
         std::shared_ptr<Object> second;
